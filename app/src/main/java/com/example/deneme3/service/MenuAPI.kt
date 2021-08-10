@@ -1,11 +1,11 @@
 package com.example.deneme3.service
 
 import com.example.deneme3.model.Menu
-import retrofit2.Response
+import io.reactivex.Single
 import retrofit2.http.GET
 
-interface Api {
+interface MenuAPI {
 
     @GET("getMonthlyMenu")
-    suspend fun getMonthlyMenu(): Response<Menu>
+    fun getMonthlyMenu():Single<Menu>
 }
