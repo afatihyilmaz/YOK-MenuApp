@@ -32,9 +32,9 @@ class MainPageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
-        viewModel.getDataFromAPI()
-        progressBar.visibility = View.INVISIBLE
+        viewModel.getDataFromRoom()
 
+        progressBar.visibility = View.INVISIBLE
 
         button22.setOnClickListener {
             observeLiveData()
@@ -45,9 +45,10 @@ class MainPageFragment : Fragment() {
 
 
     private fun observeLiveData(){
-        viewModel.menus.observe(viewLifecycleOwner, { menus ->
+        viewModel.menuFeatures.observe(viewLifecycleOwner, { menus ->
             menus?.let {
-                textView22.text = menus?.data?.get(1).toString()
+                textView22.text = menus?.toString()
+
             }
         })
 
