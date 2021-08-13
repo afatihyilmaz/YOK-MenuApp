@@ -18,8 +18,6 @@ data class MenuFeatures(
     val rateCount: Int,
     @ColumnInfo(name = "foods")
     val foods: List<Food>?
-) {
-
-}
+)
 
 

@@ -10,14 +10,13 @@
 
         <TextView
             android:id="@+id/textView22"
-            android:layout_width="302dp"
-            android:layout_height="505dp"
-            android:layout_marginTop="30dp"
+            android:layout_width="306dp"
+            android:layout_height="274dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="42dp"
             android:text="MenuMenuMenuMenuMenuMenuMenuMenuMenuMenuMenu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button22" />
 
@@ -25,12 +24,12 @@
             android:id="@+id/button22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
+            android:layout_marginBottom="14dp"
             android:text="Get Menu"
+            app:layout_constraintTop_toBottomOf="@+id/RVdateList"
             app:layout_constraintBottom_toTopOf="@+id/textView22"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -45,5 +44,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button22"
             app:layout_constraintVertical_bias="0.38" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RVdateList"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:fadeScrollbars="false"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
