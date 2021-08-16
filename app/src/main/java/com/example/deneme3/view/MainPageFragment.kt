@@ -5,19 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.lifecycle.Observer
+import androidx.core.view.get
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.deneme3.R
 import com.example.deneme3.adapter.DateAdapter
 import com.example.deneme3.viewmodel.MenuViewModel
 import kotlinx.android.synthetic.main.fragment_main_page.*
+import retrofit2.http.POST
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainPageFragment : Fragment() {
     private lateinit var viewModel : MenuViewModel
-
+    private lateinit var dList : ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,20 +40,8 @@ class MainPageFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
         viewModel.getDataFromAPI()
 
-        var dList : ArrayList<String> = ArrayList()
-        dList.add("04")
-        dList.add("05")
-        dList.add("06")
-        dList.add("09")
-        dList.add("10")
-        RVdateList.layoutManager = LinearLayoutManager(context)
-    //    val adapterList : ArrayList<String>? = viewModel.dateList.value
-        val dateAdapter = DateAdapter(dList)
-        println(dList)
-        RVdateList.adapter = dateAdapter
-
+        RVdateList.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         progressBar.visibility = View.INVISIBLE
-
 
             observeLiveData()
 
@@ -65,16 +55,29 @@ class MainPageFragment : Fragment() {
             menus?.let {
                 textView22.text = menus?.toString()
 
+                dList = viewModel.dateRecyclerList
+                println(viewModel.dateRecyclerList.toString())
+                val dateAdapter = DateAdapter(dList)
+                RVdateList.adapter = dateAdapter
+              /*  dateAdapter.setOnItemClickListener(object : DateAdapter.onItemClickListener{
+                    override fun onItemClick(position: Int) {
+                        Toast.makeText(context, "Clicked on $position", Toast.LENGTH_SHORT).show()
+                    }
+
+                })*/
+
+
+
             }
         })
 
         viewModel.menuError.observe(viewLifecycleOwner, { error ->
             error?.let {
                 if(it) {
-                    Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(context, "No error", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "No error", Toast.LENGTH_SHORT).show()
                 }
             }
         })

@@ -19,17 +19,17 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
+
 class MenuViewModel(application: Application) : BaseViewModel(application) {
 
     private val menuApiService = MenuAPIService()
     private val disposable = CompositeDisposable()
 
-    val menus = MutableLiveData<Menu>()
+    var menus = MutableLiveData<Menu>()
     val menuError = MutableLiveData<Boolean>()
     val menuLoading = MutableLiveData<Boolean>()
     val menuFeatures = MutableLiveData<MenuFeatures>()
-
-    val dateList = MutableLiveData<ArrayList<String>>()
+    var dateRecyclerList : ArrayList<String> = arrayListOf()
 
 
 
@@ -46,9 +46,10 @@ class MenuViewModel(application: Application) : BaseViewModel(application) {
                         val arr : List<MenuFeatures> = t.data
                         storeInDatabase(arr)
                         showDailyMenu(arr)
-                     //   splitDate(arr)
+                        splitDate(arr)
 
-                        Toast.makeText(getApplication(),"Menus From API", Toast.LENGTH_LONG).show()
+
+                        Toast.makeText(getApplication(),"Menus From API", Toast.LENGTH_SHORT).show()
                     }
 
                     override fun onError(e: Throwable) {
@@ -87,32 +88,35 @@ class MenuViewModel(application: Application) : BaseViewModel(application) {
         }
     }
 
-  /*  private fun splitDate(list: List<MenuFeatures>){
+    fun splitDate(list: List<MenuFeatures>){
         //"2021-08-02T00:00:00",
         var i = 0
-
-        while(i<list.size){
+        while(i < list.size){
             var tempDate = list[i].menuDate
-            var date = tempDate.subSequence(8,10).toString()
-
-           dList.add(date)
-            i +=1
+            var date = tempDate.subSequence(8, 10).toString()
+            dateRecyclerList.add(date)
+            i+=1
         }
 
-
-
-        println(dList)
-        println("------")
-        dateList.value = dList
-        println(dateList.value.toString())
-
+        dateRecyclerList.add("04")
+        dateRecyclerList.add("05")
+        dateRecyclerList.add("06")
+        dateRecyclerList.add("09")
+        dateRecyclerList.add("10")
+        dateRecyclerList.add("11")
+        dateRecyclerList.add("12")
+        dateRecyclerList.add("13")
+        dateRecyclerList.add("16")
+        dateRecyclerList.add("17")
+        dateRecyclerList.add("18")
+        dateRecyclerList.add("19")
+        dateRecyclerList.add("20")
       //  var date = Date().toString() //Fri Aug 13 11:22:31 GMT 2021
     //    println(date)
-    }*/
+    }
 
     override fun onCleared() {
         super.onCleared()
-
         disposable.clear()
     }
 }
