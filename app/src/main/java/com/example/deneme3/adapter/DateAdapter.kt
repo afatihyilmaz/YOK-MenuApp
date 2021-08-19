@@ -6,17 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deneme3.R
+import com.example.deneme3.model.RecyclerDateModel
+import com.example.deneme3.util.PlaceholderProgressBar
 import com.example.deneme3.util.downloadFromUrl
 import kotlinx.android.synthetic.main.fragment_main_page.view.*
 import kotlinx.android.synthetic.main.item_active_date.view.*
 import kotlinx.android.synthetic.main.item_date.view.*
 
-class DateAdapter(val dateList: ArrayList<String>): RecyclerView.Adapter<DateAdapter.DateViewHolder>() {
+class DateAdapter(val dateList: ArrayList<RecyclerDateModel>): RecyclerView.Adapter<DateAdapter.DateViewHolder>() {
 
-   /* private lateinit var mListener : onItemClickListener
+    private lateinit var mListener : onItemClickListener
 
     interface onItemClickListener{
         fun onItemClick(position: Int)
@@ -24,37 +27,71 @@ class DateAdapter(val dateList: ArrayList<String>): RecyclerView.Adapter<DateAda
 
     fun setOnItemClickListener(listener: onItemClickListener){
         mListener = listener
-    }*/
+    }
 
      class DateViewHolder(var view: View) : RecyclerView.ViewHolder(view){
 
-
-       /* init {
-            view.setOnClickListener {
-                listener.onItemClick(adapterPosition)
-
-            }
-        }*/
+        init {
+        }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DateViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_date,parent, false)
+        val view = inflater.inflate(R.layout.item_active_date,parent, false)
 
         return DateViewHolder(view)
     }
 
 
+
     override fun onBindViewHolder(holder: DateViewHolder, position: Int) {
-        holder.view.TVItemDateDayAbbreviation.text = "DAY"
-        holder.view.TVItemDateNumber.text = dateList[position]
+        holder.view.TVActiveDateDayItem.text = dateList[position].dateName
+        holder.view.TVActiveNumberItem.text = dateList[position].dateNumber
+
+
+        val layout : ConstraintLayout = holder.view.RVdateLayout
+        layout.setBackgroundResource(R.color.grey)
+
+
+
+
+
+        val isExpanded = dateList.get(position).isSelected
+        if(isExpanded){
+            holder.view.expendableLayout.visibility = View.VISIBLE
+            layout.setBackgroundResource(R.color.dark_red)
+        }else{
+            holder.view.expendableLayout.visibility = View.GONE
+            layout.setBackgroundResource(R.color.grey)
+        }
+
+
 
         holder.itemView.setOnClickListener {
-            holder.itemView.setBackgroundResource(R.drawable.active_date_background)
+            for(i in dateList){
+                i.isSelected=false
+            }
+            val recyclerDate : RecyclerDateModel = dateList.get(position)
+            recyclerDate.isSelected = !isExpanded
+            layout.setBackgroundResource(R.color.dark_red)
+            notifyDataSetChanged()
             Toast.makeText(holder.itemView.context, "Clicked on $position", Toast.LENGTH_SHORT).show()
         }
 
+
+           /* if(dateList[position].isSelected){
+                holder.view.expendableLayout.visibility = View.GONE
+                holder.view.setBackgroundResource(R.drawable.date_background)
+                dateList[position].isSelected = false
+                notifyItemChanged(position)
+            }
+            else{
+                holder.view.expendableLayout.visibility = View.VISIBLE
+                holder.view.setBackgroundResource(R.drawable.active_date_background)
+                dateList[position].isSelected = true
+                notifyItemChanged(position)
+            }*/
 
     }
 

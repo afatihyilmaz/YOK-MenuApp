@@ -16,6 +16,7 @@ fun ImageView.downloadFromUrl(url: String, progressDrawable: CircularProgressDra
     Glide.with(context)
         .setDefaultRequestOptions(options)
         .load(url)
+        .circleCrop()
         .into(this)
 }
 
@@ -23,7 +24,7 @@ fun ImageView.downloadFromUrl(url: String, progressDrawable: CircularProgressDra
 fun PlaceholderProgressBar(context: Context): CircularProgressDrawable{
     return CircularProgressDrawable(context).apply {
         strokeWidth = 8f
-        centerRadius = 40f
+        centerRadius = 30f
         start()
     }
 }
