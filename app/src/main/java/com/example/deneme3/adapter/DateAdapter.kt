@@ -50,7 +50,7 @@ class DateAdapter(val dateList: ArrayList<RecyclerDateModel>): RecyclerView.Adap
         holder.view.TVActiveNumberItem.text = dateList[position].dateNumber
 
 
-        val layout : ConstraintLayout = holder.view.RVdateLayout
+        val layout : LinearLayout = holder.view.RVdateLayout
         layout.setBackgroundResource(R.color.grey)
 
 
@@ -59,10 +59,10 @@ class DateAdapter(val dateList: ArrayList<RecyclerDateModel>): RecyclerView.Adap
 
         val isExpanded = dateList.get(position).isSelected
         if(isExpanded){
-            holder.view.expendableLayout.visibility = View.VISIBLE
-            layout.setBackgroundResource(R.color.dark_red)
+           // holder.view.expendableLayout.visibility = View.VISIBLE
+            layout.setBackgroundResource(R.color.pink)
         }else{
-            holder.view.expendableLayout.visibility = View.GONE
+           // holder.view.expendableLayout.visibility = View.GONE
             layout.setBackgroundResource(R.color.grey)
         }
 
@@ -74,7 +74,7 @@ class DateAdapter(val dateList: ArrayList<RecyclerDateModel>): RecyclerView.Adap
             }
             val recyclerDate : RecyclerDateModel = dateList.get(position)
             recyclerDate.isSelected = !isExpanded
-            layout.setBackgroundResource(R.color.dark_red)
+            layout.setBackgroundResource(R.color.pink)
             notifyDataSetChanged()
             Toast.makeText(holder.itemView.context, "Clicked on $position", Toast.LENGTH_SHORT).show()
         }

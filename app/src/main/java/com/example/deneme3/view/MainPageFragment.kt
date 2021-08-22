@@ -61,8 +61,8 @@ class MainPageFragment : Fragment() {
                 CV01textView.text = menus?.foods?.get(1)?.name
                 CV10textView.text = menus?.foods?.get(2)?.name
                 CV11textView.text = menus?.foods?.get(3)?.name
-                CV20textView.text = menus?.foods?.get(4)?.name
-                CV21textView.text = menus?.foods?.get(5)?.name
+             //   CV20textView.text = menus?.foods?.get(4)?.name
+              //  CV21textView.text = menus?.foods?.get(5)?.name
 
                 var url = ""
                  url = menus?.foods?.get(0)?.photoUrl!!
@@ -89,7 +89,7 @@ class MainPageFragment : Fragment() {
                         it2
                     )
                 }
-                 url = menus?.foods?.get(4)?.photoUrl!!
+               /*  url = menus?.foods?.get(4)?.photoUrl!!
                 context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                     CV20ImageView.downloadFromUrl(url,
                         it2
@@ -100,7 +100,7 @@ class MainPageFragment : Fragment() {
                     CV21ImageView.downloadFromUrl(url,
                         it2
                     )
-                }
+                }*/
 
                 dList = viewModel.dateRecyclerList
                 println(viewModel.dateRecyclerList.toString() + " ----------")

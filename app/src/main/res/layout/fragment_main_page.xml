@@ -12,13 +12,14 @@
             android:id="@+id/RVdateList"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:orientation="horizontal"
             android:padding="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/TextViewGunler" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -30,95 +31,175 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/TextViewGunler"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:text="Günler"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.029"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cardViewCL"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/yok_cardview_background">
+
+                        <TextView
+                            android:id="@+id/cardViewTextViewYOK"
+                            android:layout_width="75dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="16dp"
+                            android:text="YÖK"
+                            android:gravity="left"
+                            android:textColor="@color/black"
+                            android:textSize="32dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.087"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yemek Listesi"
+                            android:textColor="@color/pink"
+                            android:textStyle="bold"
+                            android:textSize="23sp"
+                            app:layout_constraintStart_toStartOf="@+id/cardViewTextViewYOK"
+                            app:layout_constraintTop_toBottomOf="@+id/cardViewTextViewYOK"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+                        <ImageView
+                            android:layout_width="180dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.905"
+                            app:layout_constraintStart_toEndOf="@+id/cardViewTextViewYOK"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.404"
+                            android:src="@drawable/yok"
+                            />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
         <androidx.gridlayout.widget.GridLayout
             android:id="@+id/gridLayout"
             android:layout_width="match_parent"
-            android:layout_height="360dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="42dp"
+            android:layout_height="100dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
-            app:rowCount="3"
+            android:layout_marginBottom="42dp"
             app:columnCount="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/RVdateList"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintVertical_bias="0.843"
+            app:rowCount="3">
 
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView00"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_row="0"
-                    app:layout_column="0"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    app:layout_columnWeight="1"
+                    android:layout_height="50dp"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
+                    app:cardElevation="8dp"
+                    app:layout_column="0"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill"
+                    app:layout_row="0"
+                    app:layout_rowWeight="1">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/light_grey"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/light_grey"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                            <ImageView
-                                android:id="@+id/CV00ImageView"
-                                android:layout_width="75dp"
-                                android:layout_height="75dp"
-                                android:src="@mipmap/ic_launcher"/>
+                                <ImageView
+                                    android:id="@+id/CV00ImageView"
+                                    android:layout_width="75dp"
+                                    android:layout_height="75dp"
+                                    android:src="@mipmap/ic_launcher" />
 
-                            <TextView
-                                android:id="@+id/CV00textView"
-                                android:layout_width="match_parent"
-                                android:layout_height="16dp"
-                                android:text="--------"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
-                                android:textAlignment="center"/>
-                    </LinearLayout>
+                                <TextView
+                                    android:id="@+id/CV00textView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="16dp"
+                                    android:text="--------"
+                                    android:textAlignment="center"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+                        </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_row="0"
-                    app:layout_column="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    app:layout_columnWeight="1"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
+                    app:cardElevation="8dp"
+                    app:layout_column="1"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill"
+                    app:layout_row="0"
+                    app:layout_rowWeight="1">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_grey"
-                            android:orientation="vertical"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
                                 <ImageView
                                     android:id="@+id/CV01ImageView"
                                     android:layout_width="75dp"
                                     android:layout_height="75dp"
-                                    android:src="@mipmap/ic_launcher"
-                                    android:layout_marginBottom="4dp"/>
+                                    android:layout_marginBottom="4dp"
+                                    android:src="@mipmap/ic_launcher" />
 
                                 <TextView
                                     android:id="@+id/CV01textView"
                                     android:layout_width="match_parent"
                                     android:layout_height="16dp"
                                     android:text="--------"
+                                    android:textAlignment="center"
                                     android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    android:textAlignment="center"/>
+                                    android:textStyle="bold" />
                         </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -126,37 +207,37 @@
                     android:id="@+id/cardView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_row="1"
-                    app:layout_column="0"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    app:layout_columnWeight="1"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
+                    app:cardElevation="8dp"
+                    app:layout_column="0"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill"
+                    app:layout_row="1"
+                    app:layout_rowWeight="1">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_grey"
-                            android:orientation="vertical"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
                                 <ImageView
                                     android:id="@+id/CV10ImageView"
                                     android:layout_width="75dp"
                                     android:layout_height="75dp"
-                                    android:src="@mipmap/ic_launcher"
-                                    android:layout_marginBottom="4dp"/>
+                                    android:layout_marginBottom="4dp"
+                                    android:src="@mipmap/ic_launcher" />
 
                                 <TextView
                                     android:id="@+id/CV10textView"
                                     android:layout_width="match_parent"
                                     android:layout_height="16dp"
                                     android:text="B--------"
+                                    android:textAlignment="center"
                                     android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    android:textAlignment="center"/>
+                                    android:textStyle="bold" />
                         </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -164,115 +245,41 @@
                     android:id="@+id/cardView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_row="1"
-                    app:layout_column="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    app:layout_columnWeight="1"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
+                    app:cardElevation="8dp"
+                    app:layout_column="1"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill"
+                    app:layout_row="1"
+                    app:layout_rowWeight="1">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_grey"
-                            android:orientation="vertical"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
                                 <ImageView
                                     android:id="@+id/CV11ImageView"
                                     android:layout_width="75dp"
                                     android:layout_height="75dp"
-                                    android:src="@mipmap/ic_launcher"
-                                    android:layout_marginBottom="4dp"/>
+                                    android:layout_marginBottom="4dp"
+                                    android:src="@mipmap/ic_launcher" />
 
                                 <TextView
                                     android:id="@+id/CV11textView"
                                     android:layout_width="match_parent"
                                     android:layout_height="16dp"
                                     android:text="K--------"
+                                    android:textAlignment="center"
                                     android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    android:textAlignment="center"/>
+                                    android:textStyle="bold" />
                         </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_row="2"
-                    app:layout_column="0"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/light_grey"
-                            android:orientation="vertical"
-                            android:gravity="center">
-
-                                <ImageView
-                                    android:id="@+id/CV20ImageView"
-                                    android:layout_width="75dp"
-                                    android:layout_height="75dp"
-                                    android:src="@mipmap/ic_launcher"
-                                    android:layout_marginBottom="4dp"/>
-
-                                <TextView
-                                    android:id="@+id/CV20textView"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="16dp"
-                                    android:text="--------"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    android:textAlignment="center"/>
-                        </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_row="2"
-                    app:layout_column="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/light_grey"
-                            android:orientation="vertical"
-                            android:gravity="center">
-
-                                <ImageView
-                                    android:id="@+id/CV21ImageView"
-                                    android:layout_width="75dp"
-                                    android:layout_height="75dp"
-                                    android:src="@mipmap/ic_launcher"
-                                    android:layout_marginBottom="4dp"/>
-
-                                <TextView
-                                    android:id="@+id/CV21textView"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="16dp"
-                                    android:text="--------"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    android:textAlignment="center"/>
-                        </LinearLayout>
-                </androidx.cardview.widget.CardView>
         </androidx.gridlayout.widget.GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
