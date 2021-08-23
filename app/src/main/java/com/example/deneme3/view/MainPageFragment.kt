@@ -47,7 +47,7 @@ class MainPageFragment : Fragment() {
         RVdateList.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         progressBar.visibility = View.INVISIBLE
 
-            observeLiveData()
+        observeLiveData()
 
 
     }
@@ -61,57 +61,57 @@ class MainPageFragment : Fragment() {
                 CV01textView.text = menus?.foods?.get(1)?.name
                 CV10textView.text = menus?.foods?.get(2)?.name
                 CV11textView.text = menus?.foods?.get(3)?.name
-             //   CV20textView.text = menus?.foods?.get(4)?.name
-              //  CV21textView.text = menus?.foods?.get(5)?.name
+                CV20textView.text = menus?.foods?.get(4)?.name
+                CV21textView.text = menus?.foods?.get(5)?.name
 
                 var url = ""
-                 url = menus?.foods?.get(0)?.photoUrl!!
+                url = menus?.foods?.get(0)?.photoUrl!!
                 context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                     CV00ImageView.downloadFromUrl(url,
                         it2
                     )
                 }
-                 url = menus?.foods?.get(1)?.photoUrl!!
+                url = menus?.foods?.get(1)?.photoUrl!!
                 context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                     CV01ImageView.downloadFromUrl(url,
                         it2
                     )
                 }
-                 url = menus?.foods?.get(2)?.photoUrl!!
+                url = menus?.foods?.get(2)?.photoUrl!!
                 context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                     CV10ImageView.downloadFromUrl(url,
                         it2
                     )
                 }
-                 url = menus?.foods?.get(3)?.photoUrl!!
+                url = menus?.foods?.get(3)?.photoUrl!!
                 context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                     CV11ImageView.downloadFromUrl(url,
                         it2
                     )
                 }
-               /*  url = menus?.foods?.get(4)?.photoUrl!!
-                context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
-                    CV20ImageView.downloadFromUrl(url,
-                        it2
-                    )
-                }
-                url = menus?.foods?.get(5)?.photoUrl!!
-                context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
-                    CV21ImageView.downloadFromUrl(url,
-                        it2
-                    )
-                }*/
+                 url = menus?.foods?.get(4)?.photoUrl!!
+                 context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                     CV20ImageView.downloadFromUrl(url,
+                         it2
+                     )
+                 }
+                 url = menus?.foods?.get(5)?.photoUrl!!
+                 context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                     CV21ImageView.downloadFromUrl(url,
+                         it2
+                     )
+                 }
 
                 dList = viewModel.dateRecyclerList
                 println(viewModel.dateRecyclerList.toString() + " ----------")
                 val dateAdapter = DateAdapter(dList)
                 RVdateList.adapter = dateAdapter
-             /*   dateAdapter.setOnItemClickListener(object : DateAdapter.onItemClickListener{
-                    override fun onItemClick(position: Int) {
-                        Toast.makeText(context, "Clicked on $position", Toast.LENGTH_SHORT).show()
-                    }
+                /*   dateAdapter.setOnItemClickListener(object : DateAdapter.onItemClickListener{
+                       override fun onItemClick(position: Int) {
+                           Toast.makeText(context, "Clicked on $position", Toast.LENGTH_SHORT).show()
+                       }
 
-                })*/
+                   })*/
             }
         })
 

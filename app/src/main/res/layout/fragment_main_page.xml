@@ -5,21 +5,320 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_grey"
     tools:context=".view.MainPageFragment">
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TextViewYemekler"
+            android:layout_marginBottom="10dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                        <androidx.gridlayout.widget.GridLayout
+                            android:id="@+id/gridLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="20dp"
+                            android:nestedScrollingEnabled="false"
+                            app:columnCount="2"
+                            app:rowCount="3">
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardView00"
+                                    android:layout_width="90dp"
+                                    android:layout_height="200dp"
+                                    android:layout_margin="8dp"
+                                    app:cardCornerRadius="12dp"
+                                    app:cardElevation="8dp"
+                                    app:layout_column="0"
+                                    app:layout_columnWeight="1"
+                                    app:layout_gravity="fill"
+                                    app:layout_row="0"
+                                    app:layout_rowWeight="1">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/white"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/CV00ImageView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="130dp"
+                                                    android:paddingStart="10dp"
+                                                    android:paddingEnd="10dp"
+                                                    android:src="@mipmap/ic_launcher"/>
+
+                                                <TextView
+                                                    android:id="@+id/CV00textView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="40dp"
+                                                    android:text="Mantarlı Tavuk Kavurma"
+                                                    android:textAlignment="center"
+                                                    android:gravity="center"
+                                                    android:maxLines="3"
+                                                    android:textSize="18dp"
+                                                    android:textColor="@color/black"
+                                                    android:textStyle="bold"
+                                                    android:layout_marginBottom="4dp"/>
+                                        </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardView01"
+                                    android:layout_width="90dp"
+                                    android:layout_height="200dp"
+                                    android:layout_margin="8dp"
+                                    app:cardCornerRadius="12dp"
+                                    app:cardElevation="8dp"
+                                    app:layout_column="1"
+                                    app:layout_columnWeight="1"
+                                    app:layout_gravity="fill"
+                                    app:layout_row="0"
+                                    app:layout_rowWeight="1">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/white"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/CV01ImageView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="130dp"
+                                                    android:paddingStart="10dp"
+                                                    android:paddingEnd="10dp"
+                                                    android:src="@mipmap/ic_launcher" />
+
+                                                <TextView
+                                                    android:id="@+id/CV01textView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="50dp"
+                                                    android:text="Mantarlı Tavuk Kavurma"
+                                                    android:textAlignment="center"
+                                                    android:gravity="center"
+                                                    android:maxLines="3"
+                                                    android:textSize="18dp"
+                                                    android:textColor="@color/black"
+                                                    android:layout_marginBottom="4dp"
+                                                    android:textStyle="bold" />
+                                        </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardView10"
+                                    android:layout_width="90dp"
+                                    android:layout_height="200dp"
+                                    android:layout_margin="8dp"
+                                    app:cardCornerRadius="12dp"
+                                    app:cardElevation="8dp"
+                                    app:layout_column="0"
+                                    app:layout_columnWeight="1"
+                                    app:layout_gravity="fill"
+                                    app:layout_row="1"
+                                    app:layout_rowWeight="1">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/white"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/CV10ImageView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="130dp"
+                                                    android:paddingStart="10dp"
+                                                    android:paddingEnd="10dp"
+                                                    android:layout_marginBottom="4dp"
+                                                    android:src="@mipmap/ic_launcher" />
+
+                                                <TextView
+                                                    android:id="@+id/CV10textView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="40dp"
+                                                    android:text="Mantarlı Tavuk Kavurma"
+                                                    android:textAlignment="center"
+                                                    android:gravity="center"
+                                                    android:maxLines="3"
+                                                    android:textSize="18dp"
+                                                    android:textColor="@color/black"
+                                                    android:textStyle="bold" />
+                                        </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardView11"
+                                    android:layout_width="90dp"
+                                    android:layout_height="200dp"
+                                    android:layout_margin="8dp"
+                                    app:cardCornerRadius="12dp"
+                                    app:cardElevation="8dp"
+                                    app:layout_column="1"
+                                    app:layout_columnWeight="1"
+                                    app:layout_gravity="fill"
+                                    app:layout_row="1"
+                                    app:layout_rowWeight="1">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/white"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/CV11ImageView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="130dp"
+                                                    android:paddingStart="10dp"
+                                                    android:paddingEnd="10dp"
+                                                    android:src="@mipmap/ic_launcher" />
+
+                                                <TextView
+                                                    android:id="@+id/CV11textView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="40dp"
+                                                    android:text="Mantarlı Tavuk Kavurma"
+                                                    android:textAlignment="center"
+                                                    android:gravity="center"
+                                                    android:maxLines="3"
+                                                    android:textSize="18dp"
+                                                    android:textColor="@color/black"
+                                                    android:textStyle="bold" />
+                                        </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardView20"
+                                    android:layout_width="90dp"
+                                    android:layout_height="200dp"
+                                    android:layout_margin="8dp"
+                                    app:cardCornerRadius="12dp"
+                                    app:cardElevation="8dp"
+                                    app:layout_column="0"
+                                    app:layout_columnWeight="1"
+                                    app:layout_gravity="fill"
+                                    app:layout_row="2"
+                                    app:layout_rowWeight="1">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/white"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/CV20ImageView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="130dp"
+                                                    android:paddingStart="10dp"
+                                                    android:paddingEnd="10dp"
+                                                    android:layout_marginBottom="4dp"
+                                                    android:src="@mipmap/ic_launcher" />
+
+                                                <TextView
+                                                    android:id="@+id/CV20textView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="40dp"
+                                                    android:text="Mantarlı Tavuk Kavurma"
+                                                    android:textAlignment="center"
+                                                    android:gravity="center"
+                                                    android:maxLines="3"
+                                                    android:textSize="18dp"
+                                                    android:textStyle="bold"
+                                                    android:textColor="@color/black"/>
+                                        </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardView21"
+                                    android:layout_width="90dp"
+                                    android:layout_height="200dp"
+                                    android:layout_margin="8dp"
+                                    app:cardCornerRadius="12dp"
+                                    app:cardElevation="8dp"
+                                    app:layout_column="1"
+                                    app:layout_columnWeight="1"
+                                    app:layout_gravity="fill"
+                                    app:layout_row="2"
+                                    app:layout_rowWeight="1">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/white"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/CV21ImageView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="130dp"
+                                                    android:paddingStart="10dp"
+                                                    android:paddingEnd="10dp"
+                                                    android:layout_marginBottom="4dp"
+                                                    android:src="@mipmap/ic_launcher" />
+
+                                                <TextView
+                                                    android:id="@+id/CV21textView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="40dp"
+                                                    android:text="Mantarlı Tavuk Kavurma"
+                                                    android:textAlignment="center"
+                                                    android:gravity="center"
+                                                    android:maxLines="3"
+                                                    android:textSize="18dp"
+                                                    android:textStyle="bold"
+                                                    android:textColor="@color/black"/>
+                                        </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                        </androidx.gridlayout.widget.GridLayout>
+                </LinearLayout>
+        </ScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RVdateList"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginTop="12dp"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:orientation="horizontal"
-            android:padding="4dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TextViewGunler" />
+
+        <TextView
+            android:id="@+id/TextViewYemekler"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:text="Yemekler"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.029"
+            app:layout_constraintStart_toStartOf="@id/TextViewGunler"
+            app:layout_constraintTop_toBottomOf="@+id/RVdateList"/>
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -34,16 +333,16 @@
         <TextView
             android:id="@+id/TextViewGunler"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_height="30dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
             android:text="Günler"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.029"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cardView"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <androidx.cardview.widget.CardView
@@ -109,177 +408,5 @@
 
         </androidx.cardview.widget.CardView>
 
-
-        <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/gridLayout"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="42dp"
-            app:columnCount="2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/RVdateList"
-            app:layout_constraintVertical_bias="0.843"
-            app:rowCount="3">
-
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView00"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp"
-                    app:layout_column="0"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_row="0"
-                    app:layout_rowWeight="1">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/light_grey"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/CV00ImageView"
-                                    android:layout_width="75dp"
-                                    android:layout_height="75dp"
-                                    android:src="@mipmap/ic_launcher" />
-
-                                <TextView
-                                    android:id="@+id/CV00textView"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="16dp"
-                                    android:text="--------"
-                                    android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold" />
-                        </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView01"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp"
-                    app:layout_column="1"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_row="0"
-                    app:layout_rowWeight="1">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/light_grey"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/CV01ImageView"
-                                    android:layout_width="75dp"
-                                    android:layout_height="75dp"
-                                    android:layout_marginBottom="4dp"
-                                    android:src="@mipmap/ic_launcher" />
-
-                                <TextView
-                                    android:id="@+id/CV01textView"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="16dp"
-                                    android:text="--------"
-                                    android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold" />
-                        </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp"
-                    app:layout_column="0"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_row="1"
-                    app:layout_rowWeight="1">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/light_grey"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/CV10ImageView"
-                                    android:layout_width="75dp"
-                                    android:layout_height="75dp"
-                                    android:layout_marginBottom="4dp"
-                                    android:src="@mipmap/ic_launcher" />
-
-                                <TextView
-                                    android:id="@+id/CV10textView"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="16dp"
-                                    android:text="B--------"
-                                    android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold" />
-                        </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp"
-                    app:layout_column="1"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_row="1"
-                    app:layout_rowWeight="1">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/light_grey"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/CV11ImageView"
-                                    android:layout_width="75dp"
-                                    android:layout_height="75dp"
-                                    android:layout_marginBottom="4dp"
-                                    android:src="@mipmap/ic_launcher" />
-
-                                <TextView
-                                    android:id="@+id/CV11textView"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="16dp"
-                                    android:text="K--------"
-                                    android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold" />
-                        </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-
-        </androidx.gridlayout.widget.GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

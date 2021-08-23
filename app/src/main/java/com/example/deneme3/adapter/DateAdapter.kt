@@ -1,21 +1,15 @@
 package com.example.deneme3.adapter
 
-import android.annotation.SuppressLint
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deneme3.R
 import com.example.deneme3.model.RecyclerDateModel
-import com.example.deneme3.util.PlaceholderProgressBar
-import com.example.deneme3.util.downloadFromUrl
-import kotlinx.android.synthetic.main.fragment_main_page.view.*
 import kotlinx.android.synthetic.main.item_active_date.view.*
-import kotlinx.android.synthetic.main.item_date.view.*
 
 class DateAdapter(val dateList: ArrayList<RecyclerDateModel>): RecyclerView.Adapter<DateAdapter.DateViewHolder>() {
 
@@ -29,7 +23,7 @@ class DateAdapter(val dateList: ArrayList<RecyclerDateModel>): RecyclerView.Adap
         mListener = listener
     }
 
-     class DateViewHolder(var view: View) : RecyclerView.ViewHolder(view){
+    class DateViewHolder(var view: View) : RecyclerView.ViewHolder(view){
 
         init {
         }
@@ -59,10 +53,10 @@ class DateAdapter(val dateList: ArrayList<RecyclerDateModel>): RecyclerView.Adap
 
         val isExpanded = dateList.get(position).isSelected
         if(isExpanded){
-           // holder.view.expendableLayout.visibility = View.VISIBLE
+            // holder.view.expendableLayout.visibility = View.VISIBLE
             layout.setBackgroundResource(R.color.pink)
         }else{
-           // holder.view.expendableLayout.visibility = View.GONE
+            // holder.view.expendableLayout.visibility = View.GONE
             layout.setBackgroundResource(R.color.grey)
         }
 
@@ -80,18 +74,18 @@ class DateAdapter(val dateList: ArrayList<RecyclerDateModel>): RecyclerView.Adap
         }
 
 
-           /* if(dateList[position].isSelected){
-                holder.view.expendableLayout.visibility = View.GONE
-                holder.view.setBackgroundResource(R.drawable.date_background)
-                dateList[position].isSelected = false
-                notifyItemChanged(position)
-            }
-            else{
-                holder.view.expendableLayout.visibility = View.VISIBLE
-                holder.view.setBackgroundResource(R.drawable.active_date_background)
-                dateList[position].isSelected = true
-                notifyItemChanged(position)
-            }*/
+        /* if(dateList[position].isSelected){
+             holder.view.expendableLayout.visibility = View.GONE
+             holder.view.setBackgroundResource(R.drawable.date_background)
+             dateList[position].isSelected = false
+             notifyItemChanged(position)
+         }
+         else{
+             holder.view.expendableLayout.visibility = View.VISIBLE
+             holder.view.setBackgroundResource(R.drawable.active_date_background)
+             dateList[position].isSelected = true
+             notifyItemChanged(position)
+         }*/
 
     }
 

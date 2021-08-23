@@ -16,7 +16,6 @@ fun ImageView.downloadFromUrl(url: String, progressDrawable: CircularProgressDra
     Glide.with(context)
         .setDefaultRequestOptions(options)
         .load(url)
-        .circleCrop()
         .into(this)
 }
 
