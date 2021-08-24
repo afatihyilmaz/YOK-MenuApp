@@ -29,7 +29,7 @@ class MenuViewModel(application: Application) : BaseViewModel(application) {
     var menus = MutableLiveData<Menu>()
     val menuError = MutableLiveData<Boolean>()
     val menuLoading = MutableLiveData<Boolean>()
-    val menuFeatures = MutableLiveData<MenuFeatures>()
+    val menuFeatures = MutableLiveData<List<MenuFeatures>>()
     var dateRecyclerList : ArrayList<RecyclerDateModel> = arrayListOf()
 
 
@@ -63,8 +63,8 @@ class MenuViewModel(application: Application) : BaseViewModel(application) {
         )
     }
 
-    private fun showDailyMenu(menuFeature: List<MenuFeatures>){//Tarihi alıp öyle basmalıyız
-        menuFeatures.value = menuFeature.get(0)
+    fun showDailyMenu(menuFeature: List<MenuFeatures>){
+        menuFeatures.value = menuFeature
         menuError.value = false
         menuLoading.value = false
     }
@@ -73,7 +73,7 @@ class MenuViewModel(application: Application) : BaseViewModel(application) {
         menuLoading.value = true
         launch {
             val menuFeatures = MenuDatabase(getApplication()).menuDao().getAllMenus()
-            showDailyMenu(menuFeatures)
+            //showDailyMenu(menuFeatures)
           //  splitDate(menuFeatures)
         }
         Toast.makeText(getApplication(), "Menus From Room", Toast.LENGTH_LONG).show()
@@ -93,39 +93,16 @@ class MenuViewModel(application: Application) : BaseViewModel(application) {
         //"2021-08-02T00:00:00",
         var i = 0
         while(i < list.size){
-            var recModel = RecyclerDateModel("DAY", "00", false)
-            var tempDate = list[i].menuDate
-            var date = tempDate.subSequence(8, 10).toString()
-            recModel.dateNumber = date
-            recModel.dateName = "DAY" // PZT-ÇRŞ-CMA...
+            var recModel = RecyclerDateModel("DAY","00","MONTH",false)
+            recModel.dateNumber = list[i].dateDay
+            recModel.dateDayName = list[i].dateDayName
+            recModel.dateMonthName = list[i].dateMonthName
             recModel.isSelected = false
             dateRecyclerList.add(recModel)
-            println(date)
             println(recModel)
             i+=1
         }
-        /*recModel.dateName = "DAY" // PZT-ÇRŞ-CMA...
-        recModel.isSelected = false
-        recModel.dateNumber = "04"
-        dateRecyclerList.add(recModel)
-        recModel.dateNumber = "05"
-        dateRecyclerList.add(recModel)
-        recModel.dateNumber = "06"
-        dateRecyclerList.add(recModel)
-        recModel.dateNumber = "09"
-        dateRecyclerList.add(recModel)
-        recModel.dateNumber = "10"
-        dateRecyclerList.add(recModel)
-        recModel.dateNumber = "11"
-        dateRecyclerList.add(recModel)*/
-/*        dateRecyclerList.add("13")
-        dateRecyclerList.add("16")
-        dateRecyclerList.add("17")
-        dateRecyclerList.add("18")
-        dateRecyclerList.add("19")
-        dateRecyclerList.add("20")*/
-      //  var date = Date().toString() //Fri Aug 13 11:22:31 GMT 2021
-    //    println(date)
+
     }
 
     override fun onCleared() {

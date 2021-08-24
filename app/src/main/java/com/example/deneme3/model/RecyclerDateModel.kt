@@ -1,7 +1,8 @@
 package com.example.deneme3.model
 
 data class RecyclerDateModel (
-    var dateName : String,
+    var dateDayName : String,
     var dateNumber : String,
+    var dateMonthName : String,
     var isSelected : Boolean
         )

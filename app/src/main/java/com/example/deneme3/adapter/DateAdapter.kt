@@ -5,29 +5,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deneme3.R
+import com.example.deneme3.model.MenuFeatures
 import com.example.deneme3.model.RecyclerDateModel
 import kotlinx.android.synthetic.main.item_active_date.view.*
 
-class DateAdapter(val dateList: ArrayList<RecyclerDateModel>): RecyclerView.Adapter<DateAdapter.DateViewHolder>() {
+class DateAdapter(): RecyclerView.Adapter<DateAdapter.DateViewHolder>() {
 
-    private lateinit var mListener : onItemClickListener
+    lateinit var dateList : ArrayList<RecyclerDateModel>
+    lateinit var listener : OnItemClickListener
+    lateinit var menuFeatures: List<MenuFeatures>
+    var selectedPosition : Int?=null
 
-    interface onItemClickListener{
-        fun onItemClick(position: Int)
+    constructor(dateList: ArrayList<RecyclerDateModel>, listener: OnItemClickListener, menuFeatures: List<MenuFeatures>) : this(){
+        this.dateList = dateList
+        this.listener = listener
+        this.menuFeatures = menuFeatures
     }
 
-    fun setOnItemClickListener(listener: onItemClickListener){
-        mListener = listener
-    }
-
-    class DateViewHolder(var view: View) : RecyclerView.ViewHolder(view){
+    inner class DateViewHolder(var view: View) : RecyclerView.ViewHolder(view){
+        var recyclerDateNumberText : TextView?=null
+        var recyclerDateMonthText : TextView?=null
+        var recyclerDateDayText : TextView?=null
 
         init {
+            recyclerDateNumberText = view.TVActiveNumberItem
+            recyclerDateMonthText = view.TVActiveDateMonthItem
+            recyclerDateDayText = view.TVActiveDateDayItem
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DateViewHolder {
@@ -40,27 +48,19 @@ class DateAdapter(val dateList: ArrayList<RecyclerDateModel>): RecyclerView.Adap
 
 
     override fun onBindViewHolder(holder: DateViewHolder, position: Int) {
-        holder.view.TVActiveDateDayItem.text = dateList[position].dateName
         holder.view.TVActiveNumberItem.text = dateList[position].dateNumber
-
+        holder.view.TVActiveDateMonthItem.text = dateList[position].dateMonthName
+        holder.view.TVActiveDateDayItem.text = dateList[position].dateDayName
 
         val layout : LinearLayout = holder.view.RVdateLayout
         layout.setBackgroundResource(R.color.grey)
 
-
-
-
-
         val isExpanded = dateList.get(position).isSelected
         if(isExpanded){
-            // holder.view.expendableLayout.visibility = View.VISIBLE
             layout.setBackgroundResource(R.color.pink)
         }else{
-            // holder.view.expendableLayout.visibility = View.GONE
             layout.setBackgroundResource(R.color.grey)
         }
-
-
 
         holder.itemView.setOnClickListener {
             for(i in dateList){
@@ -69,27 +69,18 @@ class DateAdapter(val dateList: ArrayList<RecyclerDateModel>): RecyclerView.Adap
             val recyclerDate : RecyclerDateModel = dateList.get(position)
             recyclerDate.isSelected = !isExpanded
             layout.setBackgroundResource(R.color.pink)
+
+            listener.onItemClick(position)
             notifyDataSetChanged()
-            Toast.makeText(holder.itemView.context, "Clicked on $position", Toast.LENGTH_SHORT).show()
+          //  Toast.makeText(holder.itemView.context, "$position Clicked", Toast.LENGTH_SHORT).show()
         }
-
-
-        /* if(dateList[position].isSelected){
-             holder.view.expendableLayout.visibility = View.GONE
-             holder.view.setBackgroundResource(R.drawable.date_background)
-             dateList[position].isSelected = false
-             notifyItemChanged(position)
-         }
-         else{
-             holder.view.expendableLayout.visibility = View.VISIBLE
-             holder.view.setBackgroundResource(R.drawable.active_date_background)
-             dateList[position].isSelected = true
-             notifyItemChanged(position)
-         }*/
-
     }
 
     override fun getItemCount(): Int {
         return dateList.size
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick(position: Int)
     }
 }
