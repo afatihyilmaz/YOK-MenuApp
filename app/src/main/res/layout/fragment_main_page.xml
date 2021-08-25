@@ -68,7 +68,7 @@
                                                     android:textAlignment="center"
                                                     android:gravity="center"
                                                     android:maxLines="3"
-                                                    android:textSize="18dp"
+                                                    android:textSize="17dp"
                                                     android:textColor="@color/black"
                                                     android:textStyle="bold"
                                                     android:layout_marginBottom="4dp"/>
@@ -111,7 +111,7 @@
                                                     android:textAlignment="center"
                                                     android:gravity="center"
                                                     android:maxLines="3"
-                                                    android:textSize="18dp"
+                                                    android:textSize="17dp"
                                                     android:textColor="@color/black"
                                                     android:layout_marginBottom="4dp"
                                                     android:textStyle="bold" />
@@ -155,7 +155,7 @@
                                                     android:textAlignment="center"
                                                     android:gravity="center"
                                                     android:maxLines="3"
-                                                    android:textSize="18dp"
+                                                    android:textSize="17dp"
                                                     android:textColor="@color/black"
                                                     android:textStyle="bold" />
                                         </LinearLayout>
@@ -197,7 +197,7 @@
                                                     android:textAlignment="center"
                                                     android:gravity="center"
                                                     android:maxLines="3"
-                                                    android:textSize="18dp"
+                                                    android:textSize="17dp"
                                                     android:textColor="@color/black"
                                                     android:textStyle="bold" />
                                         </LinearLayout>
@@ -240,7 +240,7 @@
                                                     android:textAlignment="center"
                                                     android:gravity="center"
                                                     android:maxLines="3"
-                                                    android:textSize="18dp"
+                                                    android:textSize="17dp"
                                                     android:textStyle="bold"
                                                     android:textColor="@color/black"/>
                                         </LinearLayout>
@@ -283,7 +283,7 @@
                                                     android:textAlignment="center"
                                                     android:gravity="center"
                                                     android:maxLines="3"
-                                                    android:textSize="18dp"
+                                                    android:textSize="17dp"
                                                     android:textStyle="bold"
                                                     android:textColor="@color/black"/>
                                         </LinearLayout>

@@ -18,6 +18,8 @@ import com.example.deneme3.util.PlaceholderProgressBar
 import com.example.deneme3.util.downloadFromUrl
 import com.example.deneme3.viewmodel.MenuViewModel
 import kotlinx.android.synthetic.main.fragment_main_page.*
+import java.lang.Exception
+import java.util.*
 import kotlin.collections.ArrayList
 
 class MainPageFragment : Fragment(), DateAdapter.OnItemClickListener {
@@ -42,13 +44,27 @@ class MainPageFragment : Fragment(), DateAdapter.OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
-        viewModel.getDataFromAPI()
+        try {
+            viewModel.getDataFromAPI()
 
-        RVdateList.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-        progressBar.visibility = View.INVISIBLE
+            RVdateList.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+            progressBar.visibility = View.INVISIBLE
 
-        observeLiveData(0)
+            val pos = viewModel.menuFeatures.value?.let { viewModel.showCurrentDay(it) }
+            println("on view" + pos)
+
+            if(pos!= null){
+                observeLiveData(pos)
+            }else
+                observeLiveData(0)
+
+        }catch (e : Exception){
+                print(e)
     }
+
+
+    }
+
 
 
 
@@ -59,68 +75,102 @@ class MainPageFragment : Fragment(), DateAdapter.OnItemClickListener {
 
                 dList = viewModel.dateRecyclerList
                 println(viewModel.dateRecyclerList.toString() + " ----------")
-                dateAdapter = DateAdapter(dList, this, menus)
+                dateAdapter = DateAdapter(dList, this)
                 RVdateList.adapter = dateAdapter
-
+                RVdateList.scrollToPosition(position)
                 println(menus.toString())
 
 
 
-                CV00textView.text = menus[position].foods?.get(0)?.name
-                CV01textView.text = menus[position].foods?.get(1)?.name
-                CV10textView.text = menus[position].foods?.get(2)?.name
-                CV11textView.text = menus[position].foods?.get(3)?.name
-                CV20textView.text = menus[position].foods?.get(4)?.name
-
                 if (menus[position].foods?.size!! > 5) {
+                    cardView21.visibility = View.VISIBLE
+                    CV00textView.text = menus[position].foods?.get(0)?.name
+                    CV01textView.text = menus[position].foods?.get(1)?.name
+                    CV10textView.text = menus[position].foods?.get(2)?.name
+                    CV11textView.text = menus[position].foods?.get(3)?.name
+                    CV20textView.text = menus[position].foods?.get(4)?.name
                     CV21textView.text = menus[position].foods?.get(5)?.name
+
+                    var url = ""
+                    url = menus[position].foods?.get(0)?.photoUrl!!
+                    context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                        CV00ImageView.downloadFromUrl(url,
+                            it2
+                        )
+                    }
+                    url = menus[position].foods?.get(1)?.photoUrl!!
+                    context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                        CV01ImageView.downloadFromUrl(url,
+                            it2
+                        )
+                    }
+                    url = menus[position].foods?.get(2)?.photoUrl!!
+                    context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                        CV10ImageView.downloadFromUrl(url,
+                            it2
+                        )
+                    }
+                    url = menus[position].foods?.get(3)?.photoUrl!!
+                    context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                        CV11ImageView.downloadFromUrl(url,
+                            it2
+                        )
+                    }
+                    url = menus[position].foods?.get(4)?.photoUrl!!
+                    context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                        CV20ImageView.downloadFromUrl(url,
+                            it2
+                        )
+                    }
+
+                    url = menus[position].foods?.get(5)?.photoUrl!!
+                    context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                        CV21ImageView.downloadFromUrl(url,
+                            it2
+                        )
+                    }
+                }else{
+                    CV00textView.text = menus[position].foods?.get(0)?.name
+                    CV01textView.text = menus[position].foods?.get(1)?.name
+                    CV10textView.text = menus[position].foods?.get(2)?.name
+                    CV11textView.text = menus[position].foods?.get(3)?.name
+                    CV20textView.text = menus[position].foods?.get(4)?.name
+                    cardView21.visibility = View.INVISIBLE
+                    var url = ""
+                    url = menus[position].foods?.get(0)?.photoUrl!!
+                    context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                        CV00ImageView.downloadFromUrl(url,
+                            it2
+                        )
+                    }
+                    url = menus[position].foods?.get(1)?.photoUrl!!
+                    context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                        CV01ImageView.downloadFromUrl(url,
+                            it2
+                        )
+                    }
+                    url = menus[position].foods?.get(2)?.photoUrl!!
+                    context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                        CV10ImageView.downloadFromUrl(url,
+                            it2
+                        )
+                    }
+                    url = menus[position].foods?.get(3)?.photoUrl!!
+                    context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                        CV11ImageView.downloadFromUrl(url,
+                            it2
+                        )
+                    }
+                    url = menus[position].foods?.get(4)?.photoUrl!!
+                    context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
+                        CV20ImageView.downloadFromUrl(url,
+                            it2
+                        )
+                    }
                 }
 
-                var url = ""
-                url = menus[0].foods?.get(0)?.photoUrl!!
-                context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
-                    CV00ImageView.downloadFromUrl(url,
-                        it2
-                    )
-                }
-                url = menus[0].foods?.get(1)?.photoUrl!!
-                context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
-                    CV01ImageView.downloadFromUrl(url,
-                        it2
-                    )
-                }
-                url = menus[0].foods?.get(2)?.photoUrl!!
-                context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
-                    CV10ImageView.downloadFromUrl(url,
-                        it2
-                    )
-                }
-                url = menus[0].foods?.get(3)?.photoUrl!!
-                context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
-                    CV11ImageView.downloadFromUrl(url,
-                        it2
-                    )
-                }
-                 url = menus[0].foods?.get(4)?.photoUrl!!
-                 context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
-                     CV20ImageView.downloadFromUrl(url,
-                         it2
-                     )
-                 }
-                 url = menus[0].foods?.get(5)?.photoUrl!!
-                 context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
-                     CV21ImageView.downloadFromUrl(url,
-                         it2
-                     )
-                 }
 
 
-                /*   dateAdapter.setOnItemClickListener(object : DateAdapter.onItemClickListener{
-                       override fun onItemClick(position: Int) {
-                           Toast.makeText(context, "Clicked on $position", Toast.LENGTH_SHORT).show()
-                       }
-
-                   })*/
             }
         })
 

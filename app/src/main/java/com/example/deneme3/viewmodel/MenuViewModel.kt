@@ -15,6 +15,7 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import kotlinx.coroutines.launch
+import okhttp3.internal.http.toHttpDateString
 import org.intellij.lang.annotations.Language
 import java.util.*
 import kotlin.collections.ArrayList
@@ -34,8 +35,9 @@ class MenuViewModel(application: Application) : BaseViewModel(application) {
 
 
 
-     fun getDataFromAPI(){
+     fun getDataFromAPI(): Int{
         menuLoading.value = true
+         var pos = 0
 
         disposable.add(
             menuApiService.getData()
@@ -47,7 +49,7 @@ class MenuViewModel(application: Application) : BaseViewModel(application) {
                         val arr : List<MenuFeatures> = t.data
                         storeInDatabase(arr)
                         showDailyMenu(arr)
-                        splitDate(arr)
+                        pos = splitDate(arr)
 
 
                         Toast.makeText(getApplication(),"Menus From API", Toast.LENGTH_SHORT).show()
@@ -61,7 +63,25 @@ class MenuViewModel(application: Application) : BaseViewModel(application) {
 
                 })
         )
+         println("getapi " + pos)
+         return pos
     }
+
+    fun showCurrentDay(menuFeature: List<MenuFeatures>): Int{
+        val currentDay = Calendar.getInstance().time.date
+        var i = 0
+        while (i < menuFeature.size){
+
+            if(currentDay == menuFeature[i].dateDay.toInt()){
+                println("show current " + i)
+                return i
+            }
+            i+=1
+        }
+
+    return 0
+    }
+
 
     fun showDailyMenu(menuFeature: List<MenuFeatures>){
         menuFeatures.value = menuFeature
@@ -89,21 +109,35 @@ class MenuViewModel(application: Application) : BaseViewModel(application) {
         }
     }
 
-    fun splitDate(list: List<MenuFeatures>){
+    fun splitDate(list: List<MenuFeatures>): Int{
         //"2021-08-02T00:00:00",
         var i = 0
+        var temp = 0
+        val currentDate = Calendar.getInstance().time.date
         while(i < list.size){
             var recModel = RecyclerDateModel("DAY","00","MONTH",false)
-            recModel.dateNumber = list[i].dateDay
-            recModel.dateDayName = list[i].dateDayName
-            recModel.dateMonthName = list[i].dateMonthName
-            recModel.isSelected = false
-            dateRecyclerList.add(recModel)
+            if(currentDate == list[i].dateDay.toInt()){
+                recModel.dateNumber = list[i].dateDay
+                recModel.dateDayName = list[i].dateDayName
+                recModel.dateMonthName = list[i].dateMonthName
+                recModel.isSelected = true
+                dateRecyclerList.add(recModel)
+                temp = i
+            }else{
+                recModel.dateNumber = list[i].dateDay
+                recModel.dateDayName = list[i].dateDayName
+                recModel.dateMonthName = list[i].dateMonthName
+                recModel.isSelected = false
+                dateRecyclerList.add(recModel)
+            }
+
             println(recModel)
             i+=1
         }
-
+        println("get split " + temp)
+        return temp
     }
+
 
     override fun onCleared() {
         super.onCleared()
