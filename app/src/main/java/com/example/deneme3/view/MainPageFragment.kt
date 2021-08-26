@@ -53,14 +53,11 @@ class MainPageFragment : Fragment(), DateAdapter.OnItemClickListener {
             val pos = viewModel.menuFeatures.value?.let { viewModel.showCurrentDay(it) }
             println("on view" + pos)
 
-            if(pos!= null){
-                observeLiveData(pos)
-            }else
-                observeLiveData(0)
+            observeLiveData(0, false)
 
         }catch (e : Exception){
                 print(e)
-    }
+        }
 
 
     }
@@ -68,7 +65,7 @@ class MainPageFragment : Fragment(), DateAdapter.OnItemClickListener {
 
 
 
-    private fun observeLiveData(position: Int){
+    private fun observeLiveData(position: Int, isClicked: Boolean){
         viewModel.menuFeatures.observe(viewLifecycleOwner, { menus ->
             menus?.let {
 
@@ -77,91 +74,105 @@ class MainPageFragment : Fragment(), DateAdapter.OnItemClickListener {
                 println(viewModel.dateRecyclerList.toString() + " ----------")
                 dateAdapter = DateAdapter(dList, this)
                 RVdateList.adapter = dateAdapter
-                RVdateList.scrollToPosition(position)
+
+                val currentDate = Calendar.getInstance().time.date
+                var index: Int = 0
+                if (!isClicked) {
+                    for (i in menus) {
+                        if(currentDate == i.dateDay.toInt()){
+                            break
+                        }
+                        index++
+                    }
+                }
+                else {
+                    index = position
+                }
                 println(menus.toString())
 
 
+                RVdateList.scrollToPosition(index)
 
-                if (menus[position].foods?.size!! > 5) {
+                if (menus[index].foods?.size!! > 5) {
                     cardView21.visibility = View.VISIBLE
-                    CV00textView.text = menus[position].foods?.get(0)?.name
-                    CV01textView.text = menus[position].foods?.get(1)?.name
-                    CV10textView.text = menus[position].foods?.get(2)?.name
-                    CV11textView.text = menus[position].foods?.get(3)?.name
-                    CV20textView.text = menus[position].foods?.get(4)?.name
-                    CV21textView.text = menus[position].foods?.get(5)?.name
+                    CV00textView.text = menus[index].foods?.get(0)?.name
+                    CV01textView.text = menus[index].foods?.get(1)?.name
+                    CV10textView.text = menus[index].foods?.get(2)?.name
+                    CV11textView.text = menus[index].foods?.get(3)?.name
+                    CV20textView.text = menus[index].foods?.get(4)?.name
+                    CV21textView.text = menus[index].foods?.get(5)?.name
 
                     var url = ""
-                    url = menus[position].foods?.get(0)?.photoUrl!!
+                    url = menus[index].foods?.get(0)?.photoUrl!!
                     context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                         CV00ImageView.downloadFromUrl(url,
                             it2
                         )
                     }
-                    url = menus[position].foods?.get(1)?.photoUrl!!
+                    url = menus[index].foods?.get(1)?.photoUrl!!
                     context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                         CV01ImageView.downloadFromUrl(url,
                             it2
                         )
                     }
-                    url = menus[position].foods?.get(2)?.photoUrl!!
+                    url = menus[index].foods?.get(2)?.photoUrl!!
                     context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                         CV10ImageView.downloadFromUrl(url,
                             it2
                         )
                     }
-                    url = menus[position].foods?.get(3)?.photoUrl!!
+                    url = menus[index].foods?.get(3)?.photoUrl!!
                     context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                         CV11ImageView.downloadFromUrl(url,
                             it2
                         )
                     }
-                    url = menus[position].foods?.get(4)?.photoUrl!!
+                    url = menus[index].foods?.get(4)?.photoUrl!!
                     context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                         CV20ImageView.downloadFromUrl(url,
                             it2
                         )
                     }
 
-                    url = menus[position].foods?.get(5)?.photoUrl!!
+                    url = menus[index].foods?.get(5)?.photoUrl!!
                     context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                         CV21ImageView.downloadFromUrl(url,
                             it2
                         )
                     }
                 }else{
-                    CV00textView.text = menus[position].foods?.get(0)?.name
-                    CV01textView.text = menus[position].foods?.get(1)?.name
-                    CV10textView.text = menus[position].foods?.get(2)?.name
-                    CV11textView.text = menus[position].foods?.get(3)?.name
-                    CV20textView.text = menus[position].foods?.get(4)?.name
+                    CV00textView.text = menus[index].foods?.get(0)?.name
+                    CV01textView.text = menus[index].foods?.get(1)?.name
+                    CV10textView.text = menus[index].foods?.get(2)?.name
+                    CV11textView.text = menus[index].foods?.get(3)?.name
+                    CV20textView.text = menus[index].foods?.get(4)?.name
                     cardView21.visibility = View.INVISIBLE
                     var url = ""
-                    url = menus[position].foods?.get(0)?.photoUrl!!
+                    url = menus[index].foods?.get(0)?.photoUrl!!
                     context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                         CV00ImageView.downloadFromUrl(url,
                             it2
                         )
                     }
-                    url = menus[position].foods?.get(1)?.photoUrl!!
+                    url = menus[index].foods?.get(1)?.photoUrl!!
                     context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                         CV01ImageView.downloadFromUrl(url,
                             it2
                         )
                     }
-                    url = menus[position].foods?.get(2)?.photoUrl!!
+                    url = menus[index].foods?.get(2)?.photoUrl!!
                     context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                         CV10ImageView.downloadFromUrl(url,
                             it2
                         )
                     }
-                    url = menus[position].foods?.get(3)?.photoUrl!!
+                    url = menus[index].foods?.get(3)?.photoUrl!!
                     context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                         CV11ImageView.downloadFromUrl(url,
                             it2
                         )
                     }
-                    url = menus[position].foods?.get(4)?.photoUrl!!
+                    url = menus[index].foods?.get(4)?.photoUrl!!
                     context?.let { it1 -> PlaceholderProgressBar(it1) }?.let { it2 ->
                         CV20ImageView.downloadFromUrl(url,
                             it2
@@ -199,6 +210,6 @@ class MainPageFragment : Fragment(), DateAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-            observeLiveData(position)
+            observeLiveData(position, true)
     }
 }
